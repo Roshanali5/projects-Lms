@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&family=Open+Sans:wght@300..800&display=swap');
+
+:root {
+    --main-color: #8e44ad;
+    --red: #e74c3c;
+    --orange: #f39c12;
+    --white: #fff;
+    --black: #2c3e50;
+    --light-color: #888;
+    --light-bg: #eee;
+    --border: 1rem solid rgba(0, 0, 0, .2);
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+*::selection {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--light-bg);
+    padding-left: 30rem;
+    transition: padding-left 0.3s ease-in-out;
+}
+
+/* Header */
+.header {
+    background-color: var(--white);
+    border-bottom: var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    position: relative;
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.Search-form {
+    width: 50rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--light-bg);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+}
+
+.Search-form input {
+    flex: 1;
+    background: none;
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.Search-form button {
+    font-size: 2rem;
+    background: none;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.Search-form button:hover {
+    color: var(--main-color);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon div {
+    font-size: 2rem;
+    background-color: var(--light-bg);
+    border-radius: .5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    text-align: center;
+    line-height: 4.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.icon div:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Sidebar */
+/* Sidebar Styles */
+.side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 30rem;
+    background-color: var(--white);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+}
+
+body {
+    padding-left: 30rem; /* This ensures content shifts to the right to make space for sidebar */
+    background-color: var(--light-bg);
+    transition: padding-left 0.3s ease-in-out;
+}
+
+/* When sidebar is toggled (hidden) on smaller screens */
+@media (max-width: 991px) {
+    .side-bar {
+        left: -100%;
+    }
+
+    .side-bar.active {
+        left: 0;
+    }
+
+    body {
+        padding-left: 0;
+    }
+
+    body.sidebar-active {
+        padding-left: 30rem;
+    }
+}
+
+
+
+.navbar a {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--black);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    transition: 0.3s;
+}
+
+.navbar a i {
+    margin-right: 1rem;
+    color: var(--main-color);
+}
+
+.navbar a span {
+    color: var(--light-color);
+}
+
+.navbar a:hover {
+    background-color: var(--light-bg);
+    padding-left: 2.5rem;
+}
+
+/* Sidebar Profile */
+.side-bar .profile {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.side-bar .profile img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.side-bar .profile h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin: 1rem 0 .5rem;
+}
+
+.side-bar .profile span {
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.btn, .option-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    background-color: var(--main-color);
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.option-btn {
+    background-color: var(--orange);
+}
+
+.btn:hover,
+.option-btn:hover {
+    background-color: var(--black);
+}
+
+/* Top Profile Dropdown (Header) */
+.header .profile {
+    position: absolute;
+    top: 100%;
+    right: 2rem;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: .5rem;
+    width: 30rem;
+    text-align: center;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: .2s linear;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .profile.active {
+    transform: scale(1);
+}
+
+.header .profile img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: .5rem;
+}
+
+/* Flex Buttons */
+.flex-btn {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+
+    body {
+        padding-left: 0 !important;
+    }
+
+    .side-bar {
+        width: 25rem;
+    }
+
+    .header .flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Search-form {
+        width: 100%;
+    }
+}
+
+/* When sidebar is active, body padding adjusts */
+body.sidebar-active {
+    padding-left: 30rem;
+}
